@@ -28,6 +28,6 @@ string BWT(const string& text) {
 int main() {
   string text;
   cin >> text;
-  cout << BWT(text);
+  printf("%s", BWT(text).c_str());
   return 0;
 }
