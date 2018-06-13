@@ -10,9 +10,17 @@ using std::string;
 using std::vector;
 
 string BWT(const string& text) {
-  string result = "";
-
-  // write your code here
+  string result = text;
+  
+  vector<string> m (text.size());
+  for (size_t i = 0; i < text.size(); ++i) {
+    std::rotate(begin(result),next(begin(result)),end(result));
+    m[i] = result;
+  }
+  sort(begin(m),end(m));
+  for (size_t i = 0; i < text.size(); ++i) {
+    result[i] = m[i].back();
+  }
 
   return result;
 }
@@ -20,6 +28,6 @@ string BWT(const string& text) {
 int main() {
   string text;
   cin >> text;
-  cout << BWT(text) << endl;
+  cout << BWT(text);
   return 0;
 }
