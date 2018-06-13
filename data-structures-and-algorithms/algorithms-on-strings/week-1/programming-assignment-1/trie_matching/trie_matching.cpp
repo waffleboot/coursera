@@ -40,8 +40,37 @@ int letterToIndex (char letter)
 vector <int> solve (const string& text, int n, const vector <string>& patterns)
 {
 	vector <int> result;
+    
+    vector <Node> nodes (1);
 
-	// write your code here
+    for (auto & pattern : patterns) {
+        size_t pos = 0;
+        for (auto ch : pattern) {
+            auto & v = nodes[pos];
+            auto idx = letterToIndex(ch);
+            auto nxt = v.next[idx];
+            if (nxt != NA) {
+                pos = nxt;
+            } else {
+                v.next[idx] = pos = nodes.size();
+                nodes.push_back(Node());
+            }
+        }
+    }
+
+    for (size_t i = 0; i < text.size(); ++i) {
+        size_t pos = 0;
+        for (size_t j = i; j < text.size(); ++j) {
+            auto & v = nodes[pos];
+            auto next = v.next[letterToIndex(text[j])];
+            if (next == NA) break;
+            if (nodes[next].isLeaf()) {
+                result.push_back(i);
+                break;
+            }
+            pos = next;
+        }
+    }
 
 	return result;
 }
@@ -49,7 +78,7 @@ vector <int> solve (const string& text, int n, const vector <string>& patterns)
 int main (void)
 {
 	string t;
-	cin >> text;
+	cin >> t;
 
 	int n;
 	cin >> n;
