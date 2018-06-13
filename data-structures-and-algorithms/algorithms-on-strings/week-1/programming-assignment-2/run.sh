@@ -20,3 +20,14 @@ EOF
 bwtinverse/bwtinverse < bwtinverse/sample_tests/sample1 | diff -a bwtinverse/sample_tests/sample1.a -
 bwtinverse/bwtinverse < bwtinverse/sample_tests/sample2 | diff -a bwtinverse/sample_tests/sample2.a -
 time bwtinverse/bwtinverse < bwtinverse/sample_tests/sample3 > /dev/null
+
+g++ -pipe -O2 -std=c++14 bwmatching/bwmatching.cpp -o bwmatching/bwmatching -lm 2>/dev/null
+
+cat << EOF | bwmatching/bwmatching
+C\$GTA
+EOF
+
+bwmatching/bwmatching < bwmatching/sample_tests/sample1 | diff -a bwmatching/sample_tests/sample1.a -
+bwmatching/bwmatching < bwmatching/sample_tests/sample2 | diff -a bwmatching/sample_tests/sample2.a -
+bwmatching/bwmatching < bwmatching/sample_tests/sample3 | diff -a bwmatching/sample_tests/sample3.a -
+time bwmatching/bwmatching < bwmatching/sample_tests/sample4 > /dev/null
