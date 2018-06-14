@@ -23,11 +23,11 @@ time bwtinverse/bwtinverse < bwtinverse/sample_tests/sample3 > /dev/null
 
 g++ -pipe -O2 -std=c++14 bwmatching/bwmatching.cpp -o bwmatching/bwmatching -lm
 
-#cat << EOF | bwmatching/bwmatching
-#TGGG\$AAA
-#1
-#AGA
-#EOF
+cat << EOF | bwmatching/bwmatching
+TGGG\$AAA
+1
+AGA
+EOF
 
 bwmatching/bwmatching < bwmatching/sample_tests/sample1 | diff -a bwmatching/sample_tests/sample1.a -
 bwmatching/bwmatching < bwmatching/sample_tests/sample2 | diff -a bwmatching/sample_tests/sample2.a -
