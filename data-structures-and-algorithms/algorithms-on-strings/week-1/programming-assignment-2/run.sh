@@ -34,3 +34,12 @@ bwmatching/bwmatching < bwmatching/sample_tests/sample2 | diff -a bwmatching/sam
 bwmatching/bwmatching < bwmatching/sample_tests/sample3 | diff -a bwmatching/sample_tests/sample3.a -
 time bwmatching/bwmatching < bwmatching/sample_tests/sample4 > /dev/null
 
+g++ -pipe -O2 -std=c++14 suffix_array/suffix_array.cpp -o suffix_array/suffix_array -lm
+
+cat << EOF | suffix_array/suffix_array
+panamabananas$
+EOF
+
+suffix_array/suffix_array < suffix_array/sample_tests/sample1 | diff -a suffix_array/sample_tests/sample1.a -
+suffix_array/suffix_array < suffix_array/sample_tests/sample2 | diff -a suffix_array/sample_tests/sample2.a -
+suffix_array/suffix_array < suffix_array/sample_tests/sample3 | diff -a suffix_array/sample_tests/sample3.a -
