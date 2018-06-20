@@ -17,3 +17,9 @@ suffix_array_long/suffix_array_long < suffix_array_long/sample_tests/sample1 | d
 suffix_array_long/suffix_array_long < suffix_array_long/sample_tests/sample2 | diff -w -a suffix_array_long/sample_tests/sample2.a -
 suffix_array_long/suffix_array_long < suffix_array_long/sample_tests/sample3 | diff -w -a suffix_array_long/sample_tests/sample3.a -
 suffix_array_long/suffix_array_long < suffix_array_long/sample_tests/sample4 | diff -w -a suffix_array_long/sample_tests/sample4.a -
+
+g++ -pipe -O2 -std=c++14 suffix_array_matching/suffix_array_matching.cpp -o suffix_array_matching/suffix_array_matching -lm
+
+#suffix_array_matching/suffix_array_matching < suffix_array_matching/sample_tests/sample1 | diff -w -a suffix_array_matching/sample_tests/sample1.a -
+suffix_array_matching/suffix_array_matching < suffix_array_matching/sample_tests/sample2 | diff -w -a suffix_array_matching/sample_tests/sample2.a -
+#suffix_array_matching/suffix_array_matching < suffix_array_matching/sample_tests/sample3 | diff -w -a suffix_array_matching/sample_tests/sample3.a -
